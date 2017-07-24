@@ -33,3 +33,18 @@ redis端口：`6379`
 2. SNS社区服务
 3. 内存高速缓存
 4. 利用redis的集合及数据过期策略，做一个防攻系统
+5. 利用消息订阅与发布功能 可以做聊天系统
+6. 利用list可以做消息队列服务
+
+
+
+# 编译安装
+
+```
+git clone https://github.com/antirez/redis.git
+cd redis
+make
+```
+
+
+
