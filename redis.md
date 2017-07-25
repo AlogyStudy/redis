@@ -46,5 +46,32 @@ cd redis
 make
 ```
 
+修改redis配置文件
+```
+vim redis.conf
+daemonize yes // 控制前后台运行
+```
+启动redis
+```
+./redis-server reids.conf
+./reids-cli
+```
+
+> 配置文件
+
+```
+daemonize yes // 控制前后台运行
+bind ip // 连接的ip
+timeout 0 // 超过多长时间没返回就超时
+loglevel notice // 日志级别
+```
 
 
+# 初步使用
+
+```
+set key value // 设置
+get key // 获取
+incr key // 计数
+key * // 获取全部
+```
