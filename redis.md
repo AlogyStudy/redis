@@ -94,6 +94,32 @@ appendsync everysec // 保存的频率
 appendfilename appendonly.aof // 保存文件的名字
 ```
 
+> 基础命令
+
+[redis命令手册](http://doc.redisfans.com/)
+
+**key**
+```
+keys * // 查看所有key的值
+del key // 删除指定的key
+exists key  // 判断指定key 是否存在，不存在返回0，存在返回1
+pexpire key time // 设置过期时间 (毫秒)
+expire key time // 设置过期时间（秒）
+ttl // 剩余时间 (秒) key存在，且没有设置过期时间返回-1，key不存在返回-2，其它返回剩余时间
+```
+
+**String**
+```
+strlen key // 字符串长度
+get key // 获取字符串
+set key value // 设置字符串
+mset key value key value // 同时设置多个key值
+mget key key // 同时获取多个key值
+getbit key offset // 获取key值中的指定位置的的值
+incr key // 存储值加一
+decr key // 存储值减一
+```
+
 # 配置文件 
 
 ```
@@ -113,4 +139,13 @@ slaveof <masterip> <msterport> // 主从服务器
 
 ```
 
+# 数据结构
+
+`String`, `List`（链表）,`Set`,`Hash`，`SortedSet`（有序集合）,`Pub/Sub`(发布/订阅)
+
+`List`多个元素链在一起的一串东西.
+
+```
+lrenge 
+```
 
