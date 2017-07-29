@@ -146,6 +146,9 @@ slaveof <masterip> <msterport> // 主从服务器
 `List`多个元素链在一起的一串东西.
 
 ```
-lrenge 
+lpush key value1 value2 // 写入链表 
+lrenge key start top  // 返回列表 key 中指定区间内的元素，区间以偏移量 start 和 stop 指定
+lpop key // 移除并返回列表 key 的头元素。
 ```
+
 
