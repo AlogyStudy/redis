@@ -141,14 +141,142 @@ slaveof <masterip> <msterport> // 主从服务器
 
 # 数据结构
 
+
 `String`, `List`（链表）,`Set`,`Hash`，`SortedSet`（有序集合）,`Pub/Sub`(发布/订阅)
+
+> List
 
 `List`多个元素链在一起的一串东西.
 
+特点：在任何位置增加或删除元素都很快
+缺点：不支持随机存取
+
+是每个元素都是string类型的双向链表
+`头指针` --> `data` --> `尾指针`
+
+
 ```
 lpush key value1 value2 // 写入链表 
-lrenge key start top  // 返回列表 key 中指定区间内的元素，区间以偏移量 start 和 stop 指定
+lrenge key start top  // 返回列表 key 中指定区间内的元素，区间以偏移量 start 和 stop 指定 // lrange key 0 -1
 lpop key // 移除并返回列表 key 的头元素。
+lindex key index // 获取指定index的值
 ```
+
+> Set
+
+
+```
+sadd key value1 value2 // 写入集合中
+smembers key // 获取集合所有元素
+sismember key value // 判断value是否存在key中
+srem key // 移除指定key
+
+sunion key1 key2 // 集合的并集
+sinter key1 key2 // 集合的交集
+```
+
+> SortedSet
+
+每一个元素都带有一个权重score，加入到有序集合里的所有元素都根据score进行了排序
+
+```
+zadd key score1  value1 score2 value2 // 写入有序集合中
+zadd key website 10 sf.gg 9 google.com 
+zrange key 0 -1 // 取出所有
+```
+
+> Hash
+
+
+```
+hmset key filed1 filed2  // 哈希表 key 中，一个或多个给定域的值。
+hmget key filed1 filed2 // 返回哈希表 key 中，一个或多个给定域的值。
+```
+
+> 事务
+
+一组操作在同一时间执行，其中有一个失败了，可以回滚到原来操作。
+
+```
+multi
+    命令1
+    命令2
+exec
+```
+放入队列中，管道里暂时不执行
+```
+multi
+incr count
+incr count
+incr count
+exec
+```
+
+![clipboard.png](/img/bVRRQl)
+
+> Pub/Sub
+
+
+```
+subscribe channel // 订阅
+publish channel value // 发布
+```
+
+
+# PHP操作redis
+
+
+安装`phpredis`，以`.so` 文件扩展形式存在
+
+> 安装
+
+- 进入`phpredis`源码目录，执行`phpize`
+- 配置，`./configuer --with-php-config=/phpconfig所在目录`
+- make && make install
+- 修改php配置文件
+    [reids]
+    extension="reids.so"
+- 重启php
+
+
+> 使用php操作redis
+
+```
+<?php
+	$redis = new Redis();
+	$connect_result = $reids->connect('127.0.0.1');
+	if ($connect_result) {
+		$members = array('red', 'tan', 'pink', 'cyan');
+		$redis->sadd('setname', 'red', 'tan', 'pink', 'cyan');
+		$getmem = $reids->smembers('setname');
+		var_dump($getmem);
+		$redis->close();
+	}
+```
+
+> 工具
+
+`nomn`查看系统资源使用率
+
+```
+nmon -s 1 -c 20 -f -m ./
+
+-s 间隔多长时间，去抓取系统资源利用率的快照，包括系统资源，网络，硬盘
+-c 执行多长时间
+-f 结果存文件
+-m 文件路径
+```
+
+把生成文件，使用树型结构展示，使用`nmon analysre`（windows）工具
+
+
+`redis-benchmark` reids性能测试
+
+模拟1000个客户端发起1万次测试请求，并统计linux系统资源使用情况。
+```
+redis-benchmark -c 1000 –n 10000 –csv
+```
+
+
 
 
