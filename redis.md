@@ -1,6 +1,8 @@
-# redis 是什么
+# redis 介绍
 
 一个把数据存储在内存中的高速缓存
+
+可以用来存储字符串，哈希结构，链表，因此常用来提供数据结构服务
 
 # redis 优势
 
@@ -16,11 +18,12 @@
 
 > redis 和 memcached区别
 
-都是内存高速缓存数据库，但是redis比memcached支持更多数据，且redis可持久化.
+- redis可以用来做存储（`storge`）,memcached用来做缓存（`cache`）
+- 存储的数据有“结构”，对于memcacehd来说，存储的数据，只有一种类型:字符串，而reids则可以存字符串，链表，hash结构，集合，有序集合。
 
+都是内存高速缓存数据库，但是redis比memcached支持更多数据类型，且redis可持久化.
 
-![clipboard.png](/img/bVJ3Q0)
-
+![](./_image/2017-03-09-22-49-27.jpg)
 
 
 
