@@ -97,9 +97,20 @@ appendsync everysec // 保存的频率
 appendfilename appendonly.aof // 保存文件的名字
 ```
 
+[redis命令手册](http://doc.redisfans.com/)
+
+> 通用key操作
+
+```
+keys pattern // 查询相应的key
+```
+允许模糊查询key
+有3个通配符`*`,`?`,`[]`
+`*`任意通配符
+`?`单个通配符
+
 > 基础命令
 
-[redis命令手册](http://doc.redisfans.com/)
 
 **key**
 ```
