@@ -27,6 +27,17 @@
 
 
 
+> 文件目录
+
+```
+redis-benchmark  reids性能测试工具
+redis-check-aof  检查aof日志工具
+redis-check-dump 查看rdb日志工具
+redis-cli 连接用的客户端
+redis-server  redis服务进程
+```
+
+
 # redis 使用范围
 
 > 端口 
@@ -97,10 +108,11 @@ appendsync everysec // 保存的频率
 appendfilename appendonly.aof // 保存文件的名字
 ```
 
-[redis命令手册](http://doc.redisfans.com/)
-
 > 通用key操作
 
+[redis命令手册](http://doc.redisfans.com/)
+
+**key**
 ```
 keys pattern // 查询相应的key
 ```
@@ -109,18 +121,29 @@ keys pattern // 查询相应的key
 `*`任意通配符
 `?`单个通配符
 
-> 基础命令
-
-
-**key**
+```
+randomkey // 获取随机的key
+type key  // 判断key值的类型
+exists key // 判断是否存在key
+```
+----
+```
+del key // 删除key
+rename oldKey newKey // 修改key名字 （如果原有已经存在key，则覆盖）
+renamenx oldKey newKey // 修改已经存在的key值，失败
+```
+-----
 ```
 keys * // 查看所有key的值
 del key // 删除指定的key
 exists key  // 判断指定key 是否存在，不存在返回0，存在返回1
+ttl key // 剩余时间 (秒) key存在，永久有效返回-1，不存在返回-2，其它返回剩余时间
 pexpire key time // 设置过期时间 (毫秒)
 expire key time // 设置过期时间（秒）
-ttl // 剩余时间 (秒) key存在，且没有设置过期时间返回-1，key不存在返回-2，其它返回剩余时间
+persist key // 设置永久有效
 ```
+
+> 基础类型
 
 **String**
 ```
@@ -141,7 +164,6 @@ daemonize yes // 控制前后台运行
 bind ip // 连接的ip
 timeout 0 // 超过多长时间没返回就超时
 loglevel notice // 日志级别
-databases 16 // 可以指定存储位置，默认是0
 
 save 900 1  // 900秒 有1次数据操作，就同步到硬盘中去
 save 300 10 // 300秒 之内有10次操作，就同步到硬盘中去
@@ -151,6 +173,17 @@ dbfilename dump.rdb // 硬盘存储的数据
 
 slaveof <masterip> <msterport> // 主从服务器
 
+```
+
+```
+databases 16 // 可以指定存储位置，默认使用的是`0`
+```
+使用`1`号数据库
+![](./_image/1111.png)
+
+```
+move key 数据库编号 // 移动数据到其它库中
+move key 1 
 ```
 
 # 数据结构
@@ -226,7 +259,7 @@ incr count
 exec
 ```
 
-![clipboard.png](/img/bVRRQl)
+![](./_image/2222.png)
 
 > Pub/Sub
 
