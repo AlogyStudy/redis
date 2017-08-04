@@ -112,6 +112,7 @@ appendfilename appendonly.aof // 保存文件的名字
 
 [redis命令手册](http://doc.redisfans.com/)
 
+
 **key**
 ```
 keys pattern // 查询相应的key
@@ -147,6 +148,28 @@ persist key // 设置永久有效
 
 **String**
 ```
+set key value [ex 生命周期的秒数]/[px 毫秒数] [nx|xx]
+set site sf.com ex 10 
+```
+`ex`和`px`不要同时存在，同时存在报错
+`ng`表示key不存在时，执行操作
+`xx`表示key存在时，执行操作
+
+```
+flusdb // 冲刷db
+```
+-----
+```
+mset key value key value // 一次性设置多个键值
+mget key1 key2 key3 // 一次性获取多个值
+```
+-----
+```
+setrange key offset value // 把字符串的offset偏移字节，改成value
+```
+如果**偏移量>字符串长度**该字符自动补`\x00`
+
+```
 strlen key // 字符串长度
 get key // 获取字符串
 set key value // 设置字符串
@@ -156,6 +179,9 @@ getbit key offset // 获取key值中的指定位置的的值
 incr key // 存储值加一
 decr key // 存储值减一
 ```
+
+# 配置文件 
+
 
 # 配置文件 
 
