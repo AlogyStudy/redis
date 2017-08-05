@@ -154,7 +154,6 @@ set site sf.com ex 10
 `ex`和`px`不要同时存在，同时存在报错
 `ng`表示key不存在时，执行操作
 `xx`表示key存在时，执行操作
-
 ```
 flusdb // 冲刷db
 ```
@@ -168,16 +167,24 @@ mget key1 key2 key3 // 一次性获取多个值
 setrange key offset value // 把字符串的offset偏移字节，改成value
 ```
 如果**偏移量>字符串长度**该字符自动补`\x00`
-
+```
+appned key value // 把value追加到key的原值上
+getrange key start stop // 获取字符串[start, stop]范围的值 // 对于字符串下标左数从0开始，右数从-1开始
+getset key newValue  // 获取旧值设置新值 // 返回旧值
+```
+-----
 ```
 strlen key // 字符串长度
 get key // 获取字符串
 set key value // 设置字符串
 mset key value key value // 同时设置多个key值
 mget key key // 同时获取多个key值
-getbit key offset // 获取key值中的指定位置的的值
 incr key // 存储值加一
 decr key // 存储值减一
+incrby key number // 存储值加number
+decrby key number // 存储值减number
+incrbyfloat key number // 存储值加number（number为浮点数）
+decrbyfloat key number // 存储值减number(number为浮点数)
 ```
 
 # 配置文件 
@@ -227,13 +234,76 @@ move key 1
 是每个元素都是string类型的双向链表
 `头指针` --> `data` --> `尾指针`
 
+基本组成：空间，头指针，指向下一个元素的指针。
 
 ```
-lpush key value1 value2 // 写入链表 
+lpush key value1 value2 // 从left写入链表 
+rpush  key value1 value2 // 从right写入链表
 lrenge key start top  // 返回列表 key 中指定区间内的元素，区间以偏移量 start 和 stop 指定 // lrange key 0 -1
 lpop key // 移除并返回列表 key 的头元素。
+rpop key // 移除并返回right的最后一个单元值
 lindex key index // 获取指定index的值
+llen key // 获取List的长度
+ltrim key start stop // 从List中截取指定的开始和结束，包括开始和结束字符
+lrem key count value // 从List链表中删除 // lrem answer 1 b // 通过值来删除，指定count个数
 ```
+
+![](./_image/310180808-59856e3dd58d7_articlex.png)
+
+
+```
+linsert key after|before search value // 沿着List找值，然后在值之前或之后插入新值. // linsert num after b hh // 没查询到，返回-1，插入失败。
+```
+-----
+```
+lpoprpush source dest // 把srouce的尾部拿出来，放在dest的头部
+```
+`lpoprpush`是一个原子性操作，如果自己实现通过`lpop`，`rpush`来操作，中间过程中如果有其它操作，就破坏原子性
+
+场景：task + bak 双链表完成安全队列
+
+业务逻辑：
+1：rpoplpush task job
+2: 接收返回值，并做业务处理
+3: 如果成功，rpop job清除任务，彻底删除；如果不成功，下次从bak表里取任务,继续执行
+
+![](./_image/143639739-59857430080cf_articlex.png)
+
+```
+brpop key timeout // 等待弹出key的尾元素
+blpop key timeout // 等待弹出key的头元素
+```
+`timeout` 为等待超时时间，如果`timeout`为0，则一直等待。
+
+场景: 长轮询Ajax，在线聊天
+
+> 位图法统计活跃用户
+
+1：记录用户登陆：
+每天按日期生成一个位图，用户登陆后，把user_id位上的bit位置1
+
+2： 把1周的位图 and 计算，
+位上位1的，即使连续登陆的用户
+
+```
+setbit mon 100000000 0
+setbit mon 3 1
+setbit mon 5 1
+setbit mon 7 1
+setbit thur 100000000 0
+setbit thur 3 1
+setbit thur 5 1
+setbit thur 8 1
+setbit wen 100000000 0
+setbit wen 3 1
+setbit wen 4 1
+setbit wen 6 1
+bitop and res mon thur wen
+```
+
+优点：
+1. 节约空间，1亿人每天的登陆情况，用1亿bit，约10M的字符就能表示
+2. 计算快，计算方便
 
 > Set
 
