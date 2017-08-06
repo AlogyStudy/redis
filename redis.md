@@ -23,9 +23,16 @@
 
 都是内存高速缓存数据库，但是redis比memcached支持更多数据类型，且redis可持久化.
 
-![](./_image/2017-03-09-22-49-27.jpg)
 
-
+|  //   | memcached   |  redis |
+| -------- |:-----  | :---- |
+|  类型    | 内存数据库     |   内存数据库    |
+|  数据类型     | 在定义value是就要固定数据类型 | 不需要，有字符串，链表，集合和有序集合  |
+|  虚拟内存  | 不支持    |  支持    |
+| 过期策略    | 支持     |  支持    |
+|  分布式    | magent     | master-slave, 一主一从，一主多从  |
+|  存储数据安全    |  不支持  |  使用 save存储到dump.rdb中   |
+|   灾难恢复   | 不支持    |   append only file (aof)用户数据恢复   |
 
 > 文件目录
 
@@ -224,7 +231,7 @@ move key 1
 
 `String`, `List`（链表）,`Set`,`Hash`，`SortedSet`（有序集合）,`Pub/Sub`(发布/订阅)
 
-> List
+## List
 
 `List`多个元素链在一起的一串东西.
 
@@ -305,7 +312,13 @@ bitop and res mon thur wen
 1. 节约空间，1亿人每天的登陆情况，用1亿bit，约10M的字符就能表示
 2. 计算快，计算方便
 
-> Set
+## Set 
+
+特点：
+
+- 无序性
+- 确定性 （描述是确定的）
+- 唯一性 （Set的值是唯一，不重复，独一无二）
 
 
 ```
@@ -313,32 +326,90 @@ sadd key value1 value2 // 写入集合中
 smembers key // 获取集合所有元素
 sismember key value // 判断value是否存在key中
 srem key // 移除指定key
+spop key // 返回并删除集合key的1个随机元素
+srendmember key // 返回随机的元素
+scard key // 返回集合中的长度
+```
+-----
+```
+smove srouce dest value // 把srouce中的value删除，并添加到dest集合中
+sunion key1 key2 key3... // 集合的并集
+sinter key1 key2... // 集合的交集
+sdiff key1 key2 // 集合的差集
 
-sunion key1 key2 // 集合的并集
-sinter key1 key2 // 集合的交集
+sinterstoure result key1 key2 kye3  // 把集合中的结果保存起来
 ```
 
-> SortedSet
+
+## SortedSet
+
+`Order Set` 有序集合
+集合本来是无序，既然是有序集合，必然是需要一个排序的`因子`(排序的一句，使用什么来排序)，每个元素都需要一个`score`
 
 每一个元素都带有一个权重score，加入到有序集合里的所有元素都根据score进行了排序
 
 ```
-zadd key score1  value1 score2 value2 // 写入有序集合中
+zadd key score1 value1 score2 value2 // 写入有序集合中
 zadd key website 10 sf.gg 9 google.com 
-zrange key 0 -1 // 取出所有
+zrange key 0 -1 [withscores] // 取出所有 // 默认升序 // 指定widthsrouces，一并取出指定的srouce
+zrangebyscoure key min max [withscores] limit offset N // 取srouce的[min, max]之内的元素，并跳过offset，取出N个 // 指定widthsrouces，一并取出指定的srouce
+```
+-----
+```
+zrank key member // 查询member在集合中的位置
+zrevrank key member // 倒序查看member在集合中的位置
+
+zrem  key value1 value2 // 根据value来删除指定元素
+zremrangebyscore key min max  // 根据score来删除指定[min, max]范围的元素
+zcard key // 返回元素个数
+zcount key min max // 返回[min, max]区间内的元素数量
+zinterstore destination numbers key1 key2 [WEIGHTS weight] aggregate [sum|min|max] // key1，key2的交集，权重是weight。聚合方法是sum|min|max， 聚合的结果放入des中
 ```
 
-> Hash
 
+## Hash
+
+`Hash`类似PHP的`关联数组`.
+很多单元不是通过索引，而是通过键来标记.
+Hash是一个复合结构，每一个值都是有一个独特的键，指向Hash结构
 
 ```
-hmset key filed1 filed2  // 哈希表 key 中，一个或多个给定域的值。
-hmget key filed1 filed2 // 返回哈希表 key 中，一个或多个给定域的值。
+hset key field value // Hash设置
+hget key field // 获取Hash给定的key值
+hmset key filed1 value  field2 value  // 哈希表 key 中，一个或多个给定域的值。
+hmget key field1 field2 // 返回哈希表 key 中，一个或多个给定域的值。
+hgetall key // 返回给定key的所有field
+hdel key field // 删除key中field域
+hlen key // 返回中的元素数量
+hexists key field // 判断key中有没有field域 
+hkeys key // 返回key的所有键
+hvals key // 返回key的所有值
 ```
 
-> 事务
+
+
+## 事务
 
 一组操作在同一时间执行，其中有一个失败了，可以回滚到原来操作。
+redis与mysql事务的对比：
+
+|  //   | mysql    |  redis |
+| -------- |:-----  | :---- |
+|  开启     | start transaction     |   mutil    |
+|  语句     | 普通sql     |   普通命令    |
+|  失败     | rollback 回滚    |   discard取消   |
+|  成功     |  commit   |   exec   |
+
+注：rollback与discard的区别
+如果已经成功执行了2条语句，第3条语句错误
+rollback后，前2条的语句影响消失
+discard姿势结束本次事务，前2条语句造成的影响仍然还在
+
+注：在mutil后的语句中，语句出错可能有2中情况
+1： 语法就有问题。
+这种exec时，报错，所有语句得不到执行
+2： 语法本身没错，但使用对象有问题。比如 zadd操作Link对象exec之后，会执行正确的语句，并跳过不适当的语句。
+
 
 ```
 multi
@@ -357,7 +428,7 @@ exec
 
 ![](./_image/2222.png)
 
-> Pub/Sub
+## Pub/Sub
 
 
 ```
