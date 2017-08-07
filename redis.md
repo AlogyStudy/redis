@@ -436,6 +436,190 @@ subscribe channel // 订阅
 publish channel value // 发布
 ```
 
+# rdb快照
+
+rdb快照持久化
+
+持久化：即把数据存储与断点不会丢失的设备中，通常是硬盘。
+
+常见的持久化方式：
+
+- 主从：通过主从服务器保持和持久化，如mongoDB的replication sets配置
+- 日志：操作生成相关日志，并通过日志来恢复数据，
+- couchDB对于数据内容，不修改，只追加，则文件本身即是日志，不会丢失数据。
+
+
+reids持久化的方式：
+
+- rdb
+- aof
+
+
+rdb的工作原理：
+
+rdb 快照是照`内存`.
+每隔`N分钟或N次`写操作后，从内存dump数据形成rdb文件，`压缩`，放在备份`目录`
+
+`redis-server`的主进程和`rdb导出的子进程`，一旦达到触发条件，就调用rdbdump进程。
+
+因为导出的是二进制印象，恢复速度非常快。
+
+
+rdb快照相关参数:
+```
+save 900 1 // 刷新快照到硬盘中，必须满足两者要求才触发，即900秒之后至少1一个关键字发生变化。
+save 300 10 // 必须是300秒之后只至少10个关键字发生变化
+save 60 10000 // 必须是60秒之后至少10000个关键字发生变化 
+// 屏蔽save三个选项，则rdb禁用。找不到导出规则，则永远都不导出
+
+stop-writes-on-bgsave-error yes // 后台导出存储错误了，则停止写入(如果后台保存出错，还一直写入，造成数据不一致)
+rdbcompression yes // 使用LZF压缩rdb文件
+rdbchecksum yes // 存储和加载rdb文件时校验
+dbfilename dump.rdb // 设置rdb文件名
+dir ./ // 设置工作目录，rdb文件会写入该目录
+```
+
+`reids.conf`中的配置项
+
+![](./_image/3182412190-5986c6d4939c9_articlex.png)
+
+从后往前看，时间越来越长，条件越来越松。
+
+
+rdb的缺陷：
+
+在2个保存点之前，断电，将会丢失1-N分钟的数据。
+处于对持久化的更精细要求，redis增添了`aof(append only file)`方式
+
+现在reids处理持久化数据，一般是`rdb`和`aof`配合使用。
+
+
+# aof
+
+aof日志持久化
+
+工作原理：
+`reids-server`进程接受命令，把执行的命令通过`aof`子进程写到文本文件.
+
+
+```
+appendonly on // 是否打开 aof日志功能
+
+appencfsync always // 每一个命令，都立即同步到aof，安全，速度慢
+appendfsync everysec // 每秒写一次，折中方案
+appendfsync no 写入工作交给操作系统，由操作系统判断缓冲区大小，统一写入到aof。同步频率低，速度快
+
+no-appendfsync-on-rewrite yes // 正在到处rdb快照的过程中，要不要停止同步aof
+auto-aof-rewrite-precentage 100 // aof文件大小比起上次重写时的大小，增长率100%时，重写
+auto-aof-rewrite-min-size 64mb // aof文件，至少超过64M时，重写。
+```
+
+注：在dump.rdb过程中，aof如果停止同步，会不会丢失？
+不会，所有的操作缓存在内存的队列里，dump完成后，统一操作
+
+
+> aof重写时指什么?
+
+aof重写是指把内存中的数据，逆化成命令，写入到aof日志里，以解决aof日志过大的问题。
+
+
+场景：同一个key，操作100次。
+
+把内存中的key/value逆化成相关的命令
+所有的key在内存中有一个具体的状态
+
+如：
+```
+set age 0
+incr age
+incr age
+...
+incr age
+
+get age // 100
+
+// 逆化成 (最终结果，最终状态)
+set age 100
+```
+
+`aof`重写的条件
+
+```
+auto-aof-rewrite-percentage 100 aof文件大小比起上次重写时的大小，增长率100%时，重写 // 如果只有这个条件，前期aof文件为0重写很频繁，加后面一个条件制约（需要达到64mb）
+auto-aof-rewrite-min-size 64mb 
+```
+命令重写：
+```
+bgrewriteaof
+```
+
+
+> 如果rdb文件和aof文件都存在，优先用谁来恢复数据？
+
+aof
+
+
+> 2种可以同时使用么？
+
+可以，reids推荐这种用法
+
+
+> 恢复时，rdb和aof哪个恢复快
+rdb快，因为其是数据的内存映射，直接载入到内存，而aof是命令，需要逐条执行。
+
+
+# 主从复制
+
+reids集群。
+
+集群的作用：
+
+- 主从备份 防止主机宕机
+- 读写分离，分担maste的任务
+- 任务分离，如从服务器分别备份工作与计算工作
+- master宕机后，可以直接切换到slave1
+
+集群方式：
+- 星型
+- 直线型
+
+![](./_image/1283575003-59872cc5d47e6_articlex.png)
+
+> 主从通信过程
+
+master和slave之前如何达到同步
+
+
+![](./_image/1448559964-598734837279a_articlex.png)
+
+> 主从配置
+
+master配置：
+1: 关闭rdb快照（备份工作交给slave）
+2: 可以开启aof
+```
+slaveof localhost 6379
+```
+
+slave配置：
+1: 声明slave-of
+2: 配置密码[如果master有密码]
+3: [某1个]slave打开rdb快照功能
+4: 配置是否只读[slave-read-only]
+
+
+```
+./src/redis-cli -p 6381
+```
+
+缺陷：
+
+每次salave断开后（无论是主动断开，还是网络故障）
+再连接master，都要master全部dump出来rdb，再aof(同步的过程都要重新执行一遍)
+
+
+注：多台slave，不要一下启动起来，否则master可能IO剧增
+
 
 # PHP操作redis
 
