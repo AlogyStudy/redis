@@ -620,6 +620,69 @@ slave配置：
 
 注：多台slave，不要一下启动起来，否则master可能IO剧增
 
+# redis运维简单命令
+
+```
+time // 查看时间戳与微妙数
+dbsize // 查看当前库中的key数量
+bgrewriteaof // 后台进程重写aof
+bgsave // 后台保存rdb快照 // 后台进程在做dump
+save // 保存rdb快照
+lastsave // 上次保存时间
+slaveof // 设置slave服务器
+```
+-----
+```
+flushall // 清空所有db
+flushdb // 清空当前db
+shutdown [""|save|nosave] // 断开连接，关闭服务器
+```
+如果不小心运行flushall,立即 shutdown nosave，关闭服务器然后手工编辑aof文件，去掉文件中的`flushall`相关行，然后开启服务器，就可以导入原来数据。
+如果，flushall之后，系统恰好bgrewriteaof了，那么aof就清空了，数据丢失。
+
+```
+info // 服务器的信息
+info Stats
+info CPU
+
+```
+-----
+
+```
+1：内存
+# Memory
+user_memory: 1946832 // 数据结构的空间
+user_memory_rss: 602516 // 实占空间
+mem_fragmentatation_ratio: 3.09 // 前2者的比例，1N为佳，如果此值过大，说明redis的内存的碎片化严重，可以到处再导入一次
+2: 主从复制
+# Replication
+role: slave
+master_host: 192.168.1.10
+master_prot: 6379
+master_link_status: up
+3:持久化
+# Persistence
+rdb_changes_since_last_save: 0
+rbd_last_save_time: 1342356063
+4:fork耗时
+# Status
+latest_for_usec: 963 // 上次导出rdb快照，持久化花费微秒 //  注：如果某实例有10G内容，导出需要2分钟，每分钟写入10000次，导致不断的rdb导出，磁盘始处于高IO状态。
+```
+-----
+```
+config get requirepass // 获取配置
+config set requirepass value  // 设置配置 // 特殊的选项，不允许用此命令设置，如slave-of,需要用单独的slaveof命令来设置
+slowlog // 显示慢查询 (执行命令比较慢，记录起来)
+config get showlog-log-slower-than
+```
+
+> 多久才叫慢
+
+由`sholog-log-slower-than 10000` 来指定（单位微秒）
+
+> 服务器存储多少条慢查询的记录
+
+由`slowlog-max-len 128`来做限制
 
 # PHP操作redis
 
