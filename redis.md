@@ -684,6 +684,24 @@ config get showlog-log-slower-than
 
 由`slowlog-max-len 128`来做限制
 
+# aof恢复与rdb服务器间迁移
+
+> aof恢复
+
+场景：不小心`flushall`怎么办？
+
+有`aof`，但是存在一种`aof`重写情况。
+当不小心运行`flushall`，要立即运行`shutdown nosave`，保证防止发生`aof`重写的情况。要指定`nosave`选项，不让保存到重写aof中。
+关闭redis之后，把`aof`的文件修改，`flushall`命令删除。然后重启redis。
+
+
+> rdb服务器迁移
+
+拷贝需要迁移的rdb文件，文件名为当前redis配置的`redis.conf`中的`dbfilename`选项配置相同。
+
+注意：
+在redis进程处于运行时，rdb处于打开状态。复制文件时，占据同样的句柄，导致rdb文件复制是相同。
+
 # PHP操作redis
 
 
