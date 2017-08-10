@@ -702,6 +702,58 @@ config get showlog-log-slower-than
 注意：
 在redis进程处于运行时，rdb处于打开状态。复制文件时，占据同样的句柄，导致rdb文件复制是相同。
 
+# sentinel监控
+
+> 运行时，手工，更改master，slave
+
+在redis，运行过程，master宕机，切换slave为master。
+通过：
+```
+config get
+config set
+```
+-----
+
+修改一台slave为master
+- 命令该服务不做其他redis服务的slave
+ 命令：`slaveof no one`
+- 修改其readonly为yes
+其它的slave指向刚设置的master的slave
+
+- 命令该服务为new master 的slave
+ 命令：`slaveof ip port`
+
+
+其中要作为master的slave操作
+```
+slaveof no one // 设置为master
+config  set read-read-only no // 可写
+```
+其它的slave操作
+```
+slaveof localhost 6380
+```
+
+> sentinel监控
+
+sentinel监控的作用：监控master，如果出现问题，把其中某一台的slave切换成master，其中的slave作为new master的slave
+
+```
+sentinel monitor def_master 127.0.0.1 6379 2
+sentinel auth-pass def_master passwd
+```
+
+master被当前sentinel实例认定为“失效”的间隔时间
+如果当前sentinel与master直接的通讯中，在指定时间内没有响应或者响应错误代码，那么当前sentinel就认为master失效（SDOWN，“主观”失效）
+默认为 30秒
+
+sentinel down-after-milliseconds def_master 30000
+
+当sentinel实例是否允许实施“failover”(故障转移)
+no表示当前sentinel为“观察者”(只参与“投票”，不参与实施failover)
+全局中至少有一个为yes
+sentinel can-failover def_master yes
+
 # PHP操作redis
 
 
