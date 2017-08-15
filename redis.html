@@ -1,0 +1,1717 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  width: 45em;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 30px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAAAYcAA0AAAAACjQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAABMAAAABwAAAAca8vGTk9TLzIAAAFMAAAARAAAAFZG1VHVY21hcAAAAZAAAAA+AAABQgAP9AdjdnQgAAAB0AAAAAQAAAAEACICiGdhc3AAAAHUAAAACAAAAAj//wADZ2x5ZgAAAdwAAADRAAABEKyikaNoZWFkAAACsAAAAC0AAAA2AtXoA2hoZWEAAALgAAAAHAAAACQHngNFaG10eAAAAvwAAAAQAAAAEAwAACJsb2NhAAADDAAAAAoAAAAKALIAVG1heHAAAAMYAAAAHwAAACABEAB2bmFtZQAAAzgAAALBAAAFu3I9x/Nwb3N0AAAF/AAAAB0AAAAvaoFvbwAAAAEAAAAAzBdyYwAAAADP2IQvAAAAAM/bz7t4nGNgZGFgnMDAysDB1Ml0hoGBoR9CM75mMGLkYGBgYmBlZsAKAtJcUxgcPsR8iGF2+O/AEMPsznAYKMwIkgMA5REMOXicY2BgYGaAYBkGRgYQsAHyGMF8FgYFIM0ChED+h5j//yEk/3KoSgZGNgYYk4GRCUgwMaACRoZhDwCs7QgGAAAAIgKIAAAAAf//AAJ4nHWMMQrCQBBF/0zWrCCIKUQsTDCL2EXMohYGSSmorScInsRGL2DOYJe0Ntp7BK+gJ1BxF1stZvjz/v8DRghQzEc4kIgKwiAppcA9LtzKLSkdNhKFY3HF4lK69ExKslx7Xa+vPRVS43G98vG1DnkDMIBUgFN0MDXflU8tbaZOUkXUH0+U27RoRpOIyCKjbMCVejwypzJJG4jIwb43rfl6wbwanocrJm9XFYfskuVC5K/TPyczNU7b84CXcbxks1Un6H6tLH9vf2LRnn8Ax7A5WQAAAHicY2BkYGAA4teL1+yI57f5ysDNwgAC529f0kOmWRiYVgEpDgYmEA8AUzEKsQAAAHicY2BkYGB2+O/AEMPCAAJAkpEBFbAAADgKAe0EAAAiAAAAAAQAAAAEAAAAAAAAKgAqACoAiAAAeJxjYGRgYGBhsGFgYgABEMkFhAwM/xn0QAIAD6YBhwB4nI1Ty07cMBS9QwKlQapQW3VXySvEqDCZGbGaHULiIQ1FKgjWMxknMfLEke2A+IJu+wntrt/QbVf9gG75jK577Lg8K1qQPCfnnnt8fX1NRC/pmjrk/zprC+8D7tBy9DHgBXoWfQ44Av8t4Bj4Z8CLtBL9CniJluPXASf0Lm4CXqFX8Q84dOLnMB17N4c7tBo1AS/Qi+hTwBH4rwHHwN8DXqQ30XXAS7QaLwSc0Gn8NuAVWou/gFmnjLrEaEh9GmDdDGgL3B4JsrRPDU2hTOiMSuJUIdKQQayiAth69r6akSSFqIJuA19TrzCIaY8sIoxyrNIrL//pw7A2iMygkX5vDj+G+kuoLdX4GlGK/8Lnlz6/h9MpmoO9rafrz7ILXEHHaAx95s9lsI7AHNMBWEZHULnfAXwG9/ZqdzLI08iuwRloXE8kfhXYAvE23+23DU3t626rbs8/8adv+9DWknsHp3E17oCf+Z48rvEQNZ78paYM38qfk3v/u3l3u3GXN2Dmvmvpf1Srwk3pB/VSsp512bA/GG5i2WJ7wu430yQ5K3nFGiOqgtmSB5pJVSizwaacmUZzZhXLlZTq8qGGFY2YcSkqbth6aW1tRmlaCFs2016m5qn36SbJrqosG4uMV4aP2PHBmB3tjtmgN2izkGQyLWprekbIntJFing32a5rKWCN/SdSoga45EJykyQ7asZvHQ8PTm6cslIpwyeyjbVltNikc2HTR7YKh9LBl9DADC0U/jLcBZDKrMhUBfQBvXRzLtFtjU9eNHKin0x5InTqb8lNpfKv1s1xHzTXRqgKzek/mb7nB8RZTCDhGEX3kK/8Q75AmUM/eLkfA+0Hi908Kx4eNsMgudg5GLdRD7a84npi+YxNr5i5KIbW5izXas7cHXIMAau1OueZhfj+cOcP3P8MNIWLyYOBuxL6DRylJ4cAAAB4nGNgYoAALjDJyIAOWMCiTIxMLDmZedkABtIBygAAAA==) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headeranchor-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .headeranchor-link:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .headeranchor,
+.markdown-body h2 .headeranchor,
+.markdown-body h3 .headeranchor,
+.markdown-body h4 .headeranchor,
+.markdown-body h5 .headeranchor,
+.markdown-body h6 .headeranchor {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .headeranchor-link,
+.markdown-body h2:hover .headeranchor-link,
+.markdown-body h3:hover .headeranchor-link,
+.markdown-body h4:hover .headeranchor-link,
+.markdown-body h5:hover .headeranchor-link,
+.markdown-body h6:hover .headeranchor-link {
+  height: 1em;
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .headeranchor-link .headeranchor,
+.markdown-body h2:hover .headeranchor-link .headeranchor,
+.markdown-body h3:hover .headeranchor-link .headeranchor,
+.markdown-body h4:hover .headeranchor-link .headeranchor,
+.markdown-body h5:hover .headeranchor-link .headeranchor,
+.markdown-body h6:hover .headeranchor-link .headeranchor {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* Multimarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\f05c';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><title>redis</title></head><body><article class="markdown-body"><h1 id="redis"><a name="user-content-redis" href="#redis" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>redis 介绍</h1>
+<p>一个把数据存储在内存中的高速缓存</p>
+<p>可以用来存储字符串，哈希结构，链表，因此常用来提供数据结构服务</p>
+<h1 id="redis_1"><a name="user-content-redis_1" href="#redis_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>redis 优势</h1>
+<ol>
+<li>Key-Value内存数据库</li>
+<li>读写性能强悍 </li>
+<li>支持丰富的数据结构:<code>List</code>,<code>Hash</code>,<code>Map</code>, <code>Set</code>, <code>Sorted set (排序的集合)</code>,<code>消息订阅与发布(pub/sub)</code></li>
+<li>可持久化存储 （memchaced不可持久化）,通过一种机制把存储在内存上的数据，也存储在硬盘中.</li>
+</ol>
+<p>优点：<code>高速</code>，<code>安全(可持续化)</code>，<code>丰富的数据结构</code><br />
+缺点：消耗内存(内存使用固定)，效率较低（持久化以磁盘存储）</p>
+<blockquote>
+<p>redis 和 memcached区别</p>
+</blockquote>
+<ul>
+<li>redis可以用来做存储（<code>storge</code>）,memcached用来做缓存（<code>cache</code>）</li>
+<li>存储的数据有“结构”，对于memcacehd来说，存储的数据，只有一种类型:字符串，而reids则可以存字符串，链表，hash结构，集合，有序集合。</li>
+</ul>
+<p>都是内存高速缓存数据库，但是redis比memcached支持更多数据类型，且redis可持久化.</p>
+<table>
+<thead>
+<tr>
+<th>//</th>
+<th align="left">memcached</th>
+<th>redis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>类型</td>
+<td align="left">内存数据库</td>
+<td>内存数据库</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td align="left">在定义value是就要固定数据类型</td>
+<td>不需要，有字符串，链表，集合和有序集合</td>
+</tr>
+<tr>
+<td>虚拟内存</td>
+<td align="left">不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>过期策略</td>
+<td align="left">支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>分布式</td>
+<td align="left">magent</td>
+<td>master-slave, 一主一从，一主多从</td>
+</tr>
+<tr>
+<td>存储数据安全</td>
+<td align="left">不支持</td>
+<td>使用 save存储到dump.rdb中</td>
+</tr>
+<tr>
+<td>灾难恢复</td>
+<td align="left">不支持</td>
+<td>append only file (aof)用户数据恢复</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>文件目录</p>
+</blockquote>
+<pre><code>redis-benchmark  reids性能测试工具
+redis-check-aof  检查aof日志工具
+redis-check-dump 查看rdb日志工具
+redis-cli 连接用的客户端
+redis-server  redis服务进程
+</code></pre>
+
+<h1 id="redis_2"><a name="user-content-redis_2" href="#redis_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>redis 使用范围</h1>
+<blockquote>
+<p>端口 </p>
+</blockquote>
+<p>redis端口：<code>6379</code></p>
+<blockquote>
+<p>redis使用范围</p>
+</blockquote>
+<ol>
+<li>计数器. <code>incr count</code></li>
+<li>SNS社区服务</li>
+<li>内存高速缓存</li>
+<li>利用redis的集合及数据过期策略，做一个防攻系统</li>
+<li>利用消息订阅与发布功能 可以做聊天系统</li>
+<li>利用list可以做消息队列服务</li>
+</ol>
+<p><code>List</code>把一串数据连在一起。</p>
+<h1 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>编译安装</h1>
+<pre><code>git clone https://github.com/antirez/redis.git
+cd redis
+make
+</code></pre>
+
+<p>修改redis配置文件<br />
+<pre><code>vim redis.conf
+daemonize yes // 控制前后台运行
+</code></pre><br />
+启动redis<br />
+<pre><code>./redis-server reids.conf
+./reids-cli
+</code></pre></p>
+<blockquote>
+<p>文件下的可执行文件</p>
+</blockquote>
+<pre><code>redis-server: redis服务器的daemon启动程序
+redis-cli: redi命令行操作工具
+redis-benchmark: redis性能检测工具，测试redis在当前系统及配置下的读写性能
+redis-stat: redis 状态检测工具，可以检测reids当前状态参数及延迟状况
+</code></pre>
+
+<h1 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>初步使用</h1>
+<pre><code>set key value // 设置
+get key // 获取
+incr key // 计数
+key * // 获取全部
+</code></pre>
+
+<blockquote>
+<p>redis持久化的两种方式</p>
+</blockquote>
+<ul>
+<li>将数据按照规定的频率保存到硬盘上  原子操作（速度快）<br />
+    尽量不要使用保存数据文件方式，会把以前的数据从新保存一遍 （mv）</li>
+<li>将对数据有修改的操作的命令 保存到文件中， 文件后缀为<code>.aof</code>中</li>
+</ul>
+<pre><code>appendonly on // 开启操作命令保存到文件中的方式
+appendsync everysec // 保存的频率
+appendfilename appendonly.aof // 保存文件的名字
+</code></pre>
+
+<blockquote>
+<p>通用key操作</p>
+</blockquote>
+<p><a href="http://doc.redisfans.com/">redis命令手册</a></p>
+<p><strong>key</strong><br />
+<pre><code>keys pattern // 查询相应的key
+</code></pre><br />
+允许模糊查询key<br />
+有3个通配符<code>*</code>,<code>?</code>,<code>[]</code><br />
+<code>*</code>任意通配符<br />
+<code>?</code>单个通配符</p>
+<h2 id="randomkey-key-type-key-key-exists-key-key"><a name="user-content-randomkey-key-type-key-key-exists-key-key" href="#randomkey-key-type-key-key-exists-key-key" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a><pre><code>randomkey // 获取随机的key
+type key  // 判断key值的类型
+exists key // 判断是否存在key
+</code></pre></h2>
+<h2 id="del-key-key-rename-oldkey-newkey-key-key-renamenx-oldkey-newkey-key"><a name="user-content-del-key-key-rename-oldkey-newkey-key-key-renamenx-oldkey-newkey-key" href="#del-key-key-rename-oldkey-newkey-key-key-renamenx-oldkey-newkey-key" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a><pre><code>del key // 删除key
+rename oldKey newKey // 修改key名字 （如果原有已经存在key，则覆盖）
+renamenx oldKey newKey // 修改已经存在的key值，失败
+</code></pre></h2>
+<pre><code>keys * // 查看所有key的值
+del key // 删除指定的key
+exists key  // 判断指定key 是否存在，不存在返回0，存在返回1
+ttl key // 剩余时间 (秒) key存在，永久有效返回-1，不存在返回-2，其它返回剩余时间
+pexpire key time // 设置过期时间 (毫秒)
+expire key time // 设置过期时间（秒）
+persist key // 设置永久有效
+</code></pre>
+
+<blockquote>
+<p>基础类型</p>
+</blockquote>
+<p><strong>String</strong><br />
+<pre><code>set key value [ex 生命周期的秒数]/[px 毫秒数] [nx|xx]
+set site sf.com ex 10 
+</code></pre><br />
+<code>ex</code>和<code>px</code>不要同时存在，同时存在报错<br />
+<code>ng</code>表示key不存在时，执行操作<br />
+<code>xx</code>表示key存在时，执行操作<br />
+<pre><code>flusdb // 冲刷db
+</code></pre></p>
+<hr />
+<h2 id="mset-key-value-key-value-mget-key1-key2-key3"><a name="user-content-mset-key-value-key-value-mget-key1-key2-key3" href="#mset-key-value-key-value-mget-key1-key2-key3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a><pre><code>mset key value key value // 一次性设置多个键值
+mget key1 key2 key3 // 一次性获取多个值
+</code></pre></h2>
+<p><pre><code>setrange key offset value // 把字符串的offset偏移字节，改成value
+</code></pre><br />
+如果<strong>偏移量&gt;字符串长度</strong>该字符自动补<code>\x00</code><br />
+<pre><code>appned key value // 把value追加到key的原值上
+getrange key start stop // 获取字符串[start, stop]范围的值 // 对于字符串下标左数从0开始，右数从-1开始
+getset key newValue  // 获取旧值设置新值 // 返回旧值
+</code></pre></p>
+<hr />
+<pre><code>strlen key // 字符串长度
+get key // 获取字符串
+set key value // 设置字符串
+mset key value key value // 同时设置多个key值
+mget key key // 同时获取多个key值
+incr key // 存储值加一
+decr key // 存储值减一
+incrby key number // 存储值加number
+decrby key number // 存储值减number
+incrbyfloat key number // 存储值加number（number为浮点数）
+decrbyfloat key number // 存储值减number(number为浮点数)
+</code></pre>
+
+<h1 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>配置文件</h1>
+<h1 id="_4"><a name="user-content-_4" href="#_4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>配置文件</h1>
+<pre><code>daemonize yes // 控制前后台运行
+bind ip // 连接的ip
+timeout 0 // 超过多长时间没返回就超时
+loglevel notice // 日志级别
+
+save 900 1  // 900秒 有1次数据操作，就同步到硬盘中去
+save 300 10 // 300秒 之内有10次操作，就同步到硬盘中去
+save 60 10000 // 60秒之内有10000次操作，就同步到硬盘中去
+
+dbfilename dump.rdb // 硬盘存储的数据
+
+slaveof &lt;masterip&gt; &lt;msterport&gt; // 主从服务器
+
+</code></pre>
+
+<p><pre><code>databases 16 // 可以指定存储位置，默认使用的是`0`
+</code></pre><br />
+使用<code>1</code>号数据库<br />
+<img alt="" src="///E://wamp/www/github/redis/_image/1111.png" /></p>
+<pre><code>move key 数据库编号 // 移动数据到其它库中
+move key 1 
+</code></pre>
+
+<h1 id="_5"><a name="user-content-_5" href="#_5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>数据结构</h1>
+<p><code>String</code>, <code>List</code>（链表）,<code>Set</code>,<code>Hash</code>，<code>SortedSet</code>（有序集合）,<code>Pub/Sub</code>(发布/订阅)</p>
+<h2 id="list"><a name="user-content-list" href="#list" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>List</h2>
+<p><code>List</code>多个元素链在一起的一串东西.</p>
+<p>特点：在任何位置增加或删除元素都很快<br />
+缺点：不支持随机存取</p>
+<p>是每个元素都是string类型的双向链表<br />
+<code>头指针</code> &ndash;&gt; <code>data</code> &ndash;&gt; <code>尾指针</code></p>
+<p>基本组成：空间，头指针，指向下一个元素的指针。</p>
+<pre><code>lpush key value1 value2 // 从left写入链表 
+rpush  key value1 value2 // 从right写入链表
+lrenge key start top  // 返回列表 key 中指定区间内的元素，区间以偏移量 start 和 stop 指定 // lrange key 0 -1
+lpop key // 移除并返回列表 key 的头元素。
+rpop key // 移除并返回right的最后一个单元值
+lindex key index // 获取指定index的值
+llen key // 获取List的长度
+ltrim key start stop // 从List中截取指定的开始和结束，包括开始和结束字符
+lrem key count value // 从List链表中删除 // lrem answer 1 b // 通过值来删除，指定count个数
+</code></pre>
+
+<p><img alt="" src="///E://wamp/www/github/redis/_image/310180808-59856e3dd58d7_articlex.png" /></p>
+<h2 id="linsert-key-afterbefore-search-value-list-linsert-num-after-b-hh-1"><a name="user-content-linsert-key-afterbefore-search-value-list-linsert-num-after-b-hh-1" href="#linsert-key-afterbefore-search-value-list-linsert-num-after-b-hh-1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a><pre><code>linsert key after|before search value // 沿着List找值，然后在值之前或之后插入新值. // linsert num after b hh // 没查询到，返回-1，插入失败。
+</code></pre></h2>
+<p><pre><code>lpoprpush source dest // 把srouce的尾部拿出来，放在dest的头部
+</code></pre><br />
+<code>lpoprpush</code>是一个原子性操作，如果自己实现通过<code>lpop</code>，<code>rpush</code>来操作，中间过程中如果有其它操作，就破坏原子性</p>
+<p>场景：task + bak 双链表完成安全队列</p>
+<p>业务逻辑：<br />
+1：rpoplpush task job<br />
+2: 接收返回值，并做业务处理<br />
+3: 如果成功，rpop job清除任务，彻底删除；如果不成功，下次从bak表里取任务,继续执行</p>
+<p><img alt="" src="///E://wamp/www/github/redis/_image/143639739-59857430080cf_articlex.png" /></p>
+<p><pre><code>brpop key timeout // 等待弹出key的尾元素
+blpop key timeout // 等待弹出key的头元素
+</code></pre><br />
+<code>timeout</code> 为等待超时时间，如果<code>timeout</code>为0，则一直等待。</p>
+<p>场景: 长轮询Ajax，在线聊天</p>
+<blockquote>
+<p>位图法统计活跃用户</p>
+</blockquote>
+<p>1：记录用户登陆：<br />
+每天按日期生成一个位图，用户登陆后，把user_id位上的bit位置1</p>
+<p>2： 把1周的位图 and 计算，<br />
+位上位1的，即使连续登陆的用户</p>
+<pre><code>setbit mon 100000000 0
+setbit mon 3 1
+setbit mon 5 1
+setbit mon 7 1
+setbit thur 100000000 0
+setbit thur 3 1
+setbit thur 5 1
+setbit thur 8 1
+setbit wen 100000000 0
+setbit wen 3 1
+setbit wen 4 1
+setbit wen 6 1
+bitop and res mon thur wen
+</code></pre>
+
+<p>优点：<br />
+1. 节约空间，1亿人每天的登陆情况，用1亿bit，约10M的字符就能表示<br />
+2. 计算快，计算方便</p>
+<h2 id="set"><a name="user-content-set" href="#set" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Set</h2>
+<p>特点：</p>
+<ul>
+<li>无序性</li>
+<li>确定性 （描述是确定的）</li>
+<li>唯一性 （Set的值是唯一，不重复，独一无二）</li>
+</ul>
+<h2 id="sadd-key-value1-value2-smembers-key-sismember-key-value-valuekey-srem-key-key-spop-key-key1-srendmember-key-scard-key"><a name="user-content-sadd-key-value1-value2-smembers-key-sismember-key-value-valuekey-srem-key-key-spop-key-key1-srendmember-key-scard-key" href="#sadd-key-value1-value2-smembers-key-sismember-key-value-valuekey-srem-key-key-spop-key-key1-srendmember-key-scard-key" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a><pre><code>sadd key value1 value2 // 写入集合中
+smembers key // 获取集合所有元素
+sismember key value // 判断value是否存在key中
+srem key // 移除指定key
+spop key // 返回并删除集合key的1个随机元素
+srendmember key // 返回随机的元素
+scard key // 返回集合中的长度
+</code></pre></h2>
+<pre><code>smove srouce dest value // 把srouce中的value删除，并添加到dest集合中
+sunion key1 key2 key3... // 集合的并集
+sinter key1 key2... // 集合的交集
+sdiff key1 key2 // 集合的差集
+
+sinterstoure result key1 key2 kye3  // 把集合中的结果保存起来
+</code></pre>
+
+<h2 id="sortedset"><a name="user-content-sortedset" href="#sortedset" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>SortedSet</h2>
+<p><code>Order Set</code> 有序集合<br />
+集合本来是无序，既然是有序集合，必然是需要一个排序的<code>因子</code>(排序的一句，使用什么来排序)，每个元素都需要一个<code>score</code></p>
+<p>每一个元素都带有一个权重score，加入到有序集合里的所有元素都根据score进行了排序</p>
+<h2 id="zadd-key-score1-value1-score2-value2-zadd-key-website-10-sfgg-9-googlecom-zrange-key-0-1-withscores-widthsroucessrouce-zrangebyscoure-key-min-max-withscores-limit-offset-n-sroucemin-maxoffsetn-widthsroucessrouce"><a name="user-content-zadd-key-score1-value1-score2-value2-zadd-key-website-10-sfgg-9-googlecom-zrange-key-0-1-withscores-widthsroucessrouce-zrangebyscoure-key-min-max-withscores-limit-offset-n-sroucemin-maxoffsetn-widthsroucessrouce" href="#zadd-key-score1-value1-score2-value2-zadd-key-website-10-sfgg-9-googlecom-zrange-key-0-1-withscores-widthsroucessrouce-zrangebyscoure-key-min-max-withscores-limit-offset-n-sroucemin-maxoffsetn-widthsroucessrouce" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a><pre><code>zadd key score1 value1 score2 value2 // 写入有序集合中
+zadd key website 10 sf.gg 9 google.com 
+zrange key 0 -1 [withscores] // 取出所有 // 默认升序 // 指定widthsrouces，一并取出指定的srouce
+zrangebyscoure key min max [withscores] limit offset N // 取srouce的[min, max]之内的元素，并跳过offset，取出N个 // 指定widthsrouces，一并取出指定的srouce
+</code></pre></h2>
+<pre><code>zrank key member // 查询member在集合中的位置
+zrevrank key member // 倒序查看member在集合中的位置
+
+zrem  key value1 value2 // 根据value来删除指定元素
+zremrangebyscore key min max  // 根据score来删除指定[min, max]范围的元素
+zcard key // 返回元素个数
+zcount key min max // 返回[min, max]区间内的元素数量
+zinterstore destination numbers key1 key2 [WEIGHTS weight] aggregate [sum|min|max] // key1，key2的交集，权重是weight。聚合方法是sum|min|max， 聚合的结果放入des中
+</code></pre>
+
+<h2 id="hash"><a name="user-content-hash" href="#hash" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Hash</h2>
+<p><code>Hash</code>类似PHP的<code>关联数组</code>.<br />
+很多单元不是通过索引，而是通过键来标记.<br />
+Hash是一个复合结构，每一个值都是有一个独特的键，指向Hash结构</p>
+<pre><code>hset key field value // Hash设置
+hget key field // 获取Hash给定的key值
+hmset key filed1 value  field2 value  // 哈希表 key 中，一个或多个给定域的值。
+hmget key field1 field2 // 返回哈希表 key 中，一个或多个给定域的值。
+hgetall key // 返回给定key的所有field
+hdel key field // 删除key中field域
+hlen key // 返回中的元素数量
+hexists key field // 判断key中有没有field域 
+hkeys key // 返回key的所有键
+hvals key // 返回key的所有值
+</code></pre>
+
+<h2 id="_6"><a name="user-content-_6" href="#_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>事务</h2>
+<p>一组操作在同一时间执行，其中有一个失败了，可以回滚到原来操作。<br />
+redis与mysql事务的对比：</p>
+<table>
+<thead>
+<tr>
+<th>//</th>
+<th align="left">mysql</th>
+<th>redis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>开启</td>
+<td align="left">start transaction</td>
+<td>mutil</td>
+</tr>
+<tr>
+<td>语句</td>
+<td align="left">普通sql</td>
+<td>普通命令</td>
+</tr>
+<tr>
+<td>失败</td>
+<td align="left">rollback 回滚</td>
+<td>discard取消</td>
+</tr>
+<tr>
+<td>成功</td>
+<td align="left">commit</td>
+<td>exec</td>
+</tr>
+</tbody>
+</table>
+<p>注：rollback与discard的区别<br />
+如果已经成功执行了2条语句，第3条语句错误<br />
+rollback后，前2条的语句影响消失<br />
+discard姿势结束本次事务，前2条语句造成的影响仍然还在</p>
+<p>注：在mutil后的语句中，语句出错可能有2中情况<br />
+1： 语法就有问题。<br />
+这种exec时，报错，所有语句得不到执行<br />
+2： 语法本身没错，但使用对象有问题。比如 zadd操作Link对象exec之后，会执行正确的语句，并跳过不适当的语句。</p>
+<p><pre><code>multi
+    命令1
+    命令2
+exec
+</code></pre><br />
+放入队列中，管道里暂时不执行<br />
+<pre><code>multi
+incr count
+incr count
+incr count
+exec
+</code></pre></p>
+<p><img alt="" src="///E://wamp/www/github/redis/_image/2222.png" /></p>
+<h2 id="pubsub"><a name="user-content-pubsub" href="#pubsub" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Pub/Sub</h2>
+<pre><code>subscribe channel // 订阅
+publish channel value // 发布
+</code></pre>
+
+<h1 id="rdb"><a name="user-content-rdb" href="#rdb" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>rdb快照</h1>
+<p>rdb快照持久化</p>
+<p>持久化：即把数据存储与断点不会丢失的设备中，通常是硬盘。</p>
+<p>常见的持久化方式：</p>
+<ul>
+<li>主从：通过主从服务器保持和持久化，如mongoDB的replication sets配置</li>
+<li>日志：操作生成相关日志，并通过日志来恢复数据，</li>
+<li>couchDB对于数据内容，不修改，只追加，则文件本身即是日志，不会丢失数据。</li>
+</ul>
+<p>reids持久化的方式：</p>
+<ul>
+<li>rdb</li>
+<li>aof</li>
+</ul>
+<p>rdb的工作原理：</p>
+<p>rdb 快照是照<code>内存</code>.<br />
+每隔<code>N分钟或N次</code>写操作后，从内存dump数据形成rdb文件，<code>压缩</code>，放在备份<code>目录</code></p>
+<p><code>redis-server</code>的主进程和<code>rdb导出的子进程</code>，一旦达到触发条件，就调用rdbdump进程。</p>
+<p>因为导出的是二进制印象，恢复速度非常快。</p>
+<p>rdb快照相关参数:<br />
+<pre><code>save 900 1 // 刷新快照到硬盘中，必须满足两者要求才触发，即900秒之后至少1一个关键字发生变化。
+save 300 10 // 必须是300秒之后只至少10个关键字发生变化
+save 60 10000 // 必须是60秒之后至少10000个关键字发生变化 
+// 屏蔽save三个选项，则rdb禁用。找不到导出规则，则永远都不导出
+
+stop-writes-on-bgsave-error yes // 后台导出存储错误了，则停止写入(如果后台保存出错，还一直写入，造成数据不一致)
+rdbcompression yes // 使用LZF压缩rdb文件
+rdbchecksum yes // 存储和加载rdb文件时校验
+dbfilename dump.rdb // 设置rdb文件名
+dir ./ // 设置工作目录，rdb文件会写入该目录
+</code></pre></p>
+<p><code>reids.conf</code>中的配置项</p>
+<p><img alt="" src="///E://wamp/www/github/redis/_image/3182412190-5986c6d4939c9_articlex.png" /></p>
+<p>从后往前看，时间越来越长，条件越来越松。</p>
+<p>rdb的缺陷：</p>
+<p>在2个保存点之前，断电，将会丢失1-N分钟的数据。<br />
+处于对持久化的更精细要求，redis增添了<code>aof(append only file)</code>方式</p>
+<p>现在reids处理持久化数据，一般是<code>rdb</code>和<code>aof</code>配合使用。</p>
+<h1 id="aof"><a name="user-content-aof" href="#aof" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>aof</h1>
+<p>aof日志持久化</p>
+<p>工作原理：<br />
+<code>reids-server</code>进程接受命令，把执行的命令通过<code>aof</code>子进程写到文本文件.</p>
+<pre><code>appendonly on // 是否打开 aof日志功能
+
+appencfsync always // 每一个命令，都立即同步到aof，安全，速度慢
+appendfsync everysec // 每秒写一次，折中方案
+appendfsync no 写入工作交给操作系统，由操作系统判断缓冲区大小，统一写入到aof。同步频率低，速度快
+
+no-appendfsync-on-rewrite yes // 正在到处rdb快照的过程中，要不要停止同步aof
+auto-aof-rewrite-precentage 100 // aof文件大小比起上次重写时的大小，增长率100%时，重写
+auto-aof-rewrite-min-size 64mb // aof文件，至少超过64M时，重写。
+</code></pre>
+
+<p>注：在dump.rdb过程中，aof如果停止同步，会不会丢失？<br />
+不会，所有的操作缓存在内存的队列里，dump完成后，统一操作</p>
+<blockquote>
+<p>aof重写时指什么?</p>
+</blockquote>
+<p>aof重写是指把内存中的数据，逆化成命令，写入到aof日志里，以解决aof日志过大的问题。</p>
+<p>场景：同一个key，操作100次。</p>
+<p>把内存中的key/value逆化成相关的命令<br />
+所有的key在内存中有一个具体的状态</p>
+<p>如：<br />
+<pre><code>set age 0
+incr age
+incr age
+...
+incr age
+
+get age // 100
+
+// 逆化成 (最终结果，最终状态)
+set age 100
+</code></pre></p>
+<p><code>aof</code>重写的条件</p>
+<p><pre><code>auto-aof-rewrite-percentage 100 aof文件大小比起上次重写时的大小，增长率100%时，重写 // 如果只有这个条件，前期aof文件为0重写很频繁，加后面一个条件制约（需要达到64mb）
+auto-aof-rewrite-min-size 64mb 
+</code></pre><br />
+命令重写：<br />
+<pre><code>bgrewriteaof
+</code></pre></p>
+<blockquote>
+<p>如果rdb文件和aof文件都存在，优先用谁来恢复数据？</p>
+</blockquote>
+<p>aof</p>
+<blockquote>
+<p>2种可以同时使用么？</p>
+</blockquote>
+<p>可以，reids推荐这种用法</p>
+<blockquote>
+<p>恢复时，rdb和aof哪个恢复快<br />
+rdb快，因为其是数据的内存映射，直接载入到内存，而aof是命令，需要逐条执行。</p>
+</blockquote>
+<h1 id="_7"><a name="user-content-_7" href="#_7" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>主从复制</h1>
+<p>reids集群。</p>
+<p>集群的作用：</p>
+<ul>
+<li>主从备份 防止主机宕机</li>
+<li>读写分离，分担maste的任务</li>
+<li>任务分离，如从服务器分别备份工作与计算工作</li>
+<li>master宕机后，可以直接切换到slave1</li>
+</ul>
+<p>集群方式：<br />
+- 星型<br />
+- 直线型</p>
+<p><img alt="" src="///E://wamp/www/github/redis/_image/1283575003-59872cc5d47e6_articlex.png" /></p>
+<blockquote>
+<p>主从通信过程</p>
+</blockquote>
+<p>master和slave之前如何达到同步</p>
+<p><img alt="" src="///E://wamp/www/github/redis/_image/1448559964-598734837279a_articlex.png" /></p>
+<blockquote>
+<p>主从配置</p>
+</blockquote>
+<p>master配置：<br />
+1: 关闭rdb快照（备份工作交给slave）<br />
+2: 可以开启aof<br />
+<pre><code>slaveof localhost 6379
+</code></pre></p>
+<p>slave配置：<br />
+1: 声明slave-of<br />
+2: 配置密码[如果master有密码]<br />
+3: [某1个]slave打开rdb快照功能<br />
+4: 配置是否只读[slave-read-only]</p>
+<pre><code>./src/redis-cli -p 6381
+</code></pre>
+
+<p>缺陷：</p>
+<p>每次salave断开后（无论是主动断开，还是网络故障）<br />
+再连接master，都要master全部dump出来rdb，再aof(同步的过程都要重新执行一遍)</p>
+<p>注：多台slave，不要一下启动起来，否则master可能IO剧增</p>
+<h1 id="redis_3"><a name="user-content-redis_3" href="#redis_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>redis运维简单命令</h1>
+<h2 id="time-dbsize-key-bgrewriteaof-aof-bgsave-rdb-dump-save-rdb-lastsave-slaveof-slave"><a name="user-content-time-dbsize-key-bgrewriteaof-aof-bgsave-rdb-dump-save-rdb-lastsave-slaveof-slave" href="#time-dbsize-key-bgrewriteaof-aof-bgsave-rdb-dump-save-rdb-lastsave-slaveof-slave" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a><pre><code>time // 查看时间戳与微妙数
+dbsize // 查看当前库中的key数量
+bgrewriteaof // 后台进程重写aof
+bgsave // 后台保存rdb快照 // 后台进程在做dump
+save // 保存rdb快照
+lastsave // 上次保存时间
+slaveof // 设置slave服务器
+</code></pre></h2>
+<p><pre><code>flushall // 清空所有db
+flushdb // 清空当前db
+shutdown [&quot;&quot;|save|nosave] // 断开连接，关闭服务器
+</code></pre><br />
+如果不小心运行flushall,立即 shutdown nosave，关闭服务器然后手工编辑aof文件，去掉文件中的<code>flushall</code>相关行，然后开启服务器，就可以导入原来数据。<br />
+如果，flushall之后，系统恰好bgrewriteaof了，那么aof就清空了，数据丢失。</p>
+<h2 id="info-info-stats-info-cpu"><a name="user-content-info-info-stats-info-cpu" href="#info-info-stats-info-cpu" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a><pre><code>info // 服务器的信息
+info Stats
+info CPU
+
+</code></pre></h2>
+<h2 id="1-memory-user_memory-1946832-user_memory_rss-602516-mem_fragmentatation_ratio-309-21nredis-2-replication-role-slave-master_host-192168110-master_prot-6379-master_link_status-up-3-persistence-rdb_changes_since_last_save-0-rbd_last_save_time-1342356063-4fork-status-latest_for_usec-963-rdb-10g210000rdbio"><a name="user-content-1-memory-user_memory-1946832-user_memory_rss-602516-mem_fragmentatation_ratio-309-21nredis-2-replication-role-slave-master_host-192168110-master_prot-6379-master_link_status-up-3-persistence-rdb_changes_since_last_save-0-rbd_last_save_time-1342356063-4fork-status-latest_for_usec-963-rdb-10g210000rdbio" href="#1-memory-user_memory-1946832-user_memory_rss-602516-mem_fragmentatation_ratio-309-21nredis-2-replication-role-slave-master_host-192168110-master_prot-6379-master_link_status-up-3-persistence-rdb_changes_since_last_save-0-rbd_last_save_time-1342356063-4fork-status-latest_for_usec-963-rdb-10g210000rdbio" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a><pre><code>1：内存
+# Memory
+user_memory: 1946832 // 数据结构的空间
+user_memory_rss: 602516 // 实占空间
+mem_fragmentatation_ratio: 3.09 // 前2者的比例，1N为佳，如果此值过大，说明redis的内存的碎片化严重，可以到处再导入一次
+2: 主从复制
+# Replication
+role: slave
+master_host: 192.168.1.10
+master_prot: 6379
+master_link_status: up
+3:持久化
+# Persistence
+rdb_changes_since_last_save: 0
+rbd_last_save_time: 1342356063
+4:fork耗时
+# Status
+latest_for_usec: 963 // 上次导出rdb快照，持久化花费微秒 //  注：如果某实例有10G内容，导出需要2分钟，每分钟写入10000次，导致不断的rdb导出，磁盘始处于高IO状态。
+</code></pre></h2>
+<pre><code>config get requirepass // 获取配置
+config set requirepass value  // 设置配置 // 特殊的选项，不允许用此命令设置，如slave-of,需要用单独的slaveof命令来设置
+slowlog // 显示慢查询 (执行命令比较慢，记录起来)
+config get showlog-log-slower-than
+</code></pre>
+
+<blockquote>
+<p>多久才叫慢</p>
+</blockquote>
+<p>由<code>sholog-log-slower-than 10000</code> 来指定（单位微秒）</p>
+<blockquote>
+<p>服务器存储多少条慢查询的记录</p>
+</blockquote>
+<p>由<code>slowlog-max-len 128</code>来做限制</p>
+<h1 id="aofrdb"><a name="user-content-aofrdb" href="#aofrdb" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>aof恢复与rdb服务器间迁移</h1>
+<blockquote>
+<p>aof恢复</p>
+</blockquote>
+<p>场景：不小心<code>flushall</code>怎么办？</p>
+<p>有<code>aof</code>，但是存在一种<code>aof</code>重写情况。<br />
+当不小心运行<code>flushall</code>，要立即运行<code>shutdown nosave</code>，保证防止发生<code>aof</code>重写的情况。要指定<code>nosave</code>选项，不让保存到重写aof中。<br />
+关闭redis之后，把<code>aof</code>的文件修改，<code>flushall</code>命令删除。然后重启redis。</p>
+<blockquote>
+<p>rdb服务器迁移</p>
+</blockquote>
+<p>拷贝需要迁移的rdb文件，文件名为当前redis配置的<code>redis.conf</code>中的<code>dbfilename</code>选项配置相同。</p>
+<p>注意：<br />
+在redis进程处于运行时，rdb处于打开状态。复制文件时，占据同样的句柄，导致rdb文件复制是相同。</p>
+<h1 id="sentinel"><a name="user-content-sentinel" href="#sentinel" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>sentinel监控</h1>
+<blockquote>
+<p>运行时，手工，更改master，slave</p>
+</blockquote>
+<p>在redis，运行过程，master宕机，切换slave为master。<br />
+通过：<br />
+<pre><code>config get
+config set
+</code></pre></p>
+<hr />
+<p>修改一台slave为master<br />
+- 命令该服务不做其他redis服务的slave<br />
+ 命令：<code>slaveof no one</code><br />
+- 修改其readonly为yes<br />
+其它的slave指向刚设置的master的slave</p>
+<ul>
+<li>命令该服务为new master 的slave<br />
+ 命令：<code>slaveof ip port</code></li>
+</ul>
+<p>其中要作为master的slave操作<br />
+<pre><code>slaveof no one // 设置为master
+config  set read-read-only no // 可写
+</code></pre><br />
+其它的slave操作<br />
+<pre><code>slaveof localhost 6380
+</code></pre></p>
+<blockquote>
+<p>sentinel监控</p>
+</blockquote>
+<p>sentinel监控的作用：监控master，如果出现问题，把其中某一台的slave切换成master，其中的slave作为new master的slave</p>
+<p><code>sentinel.conf</code>配置文件</p>
+<pre><code>sentinel monitor def_master 127.0.0.1 6379 2  // 2 表示默认30秒2次没回应，master失效。
+sentinel auth-pass def_master passwd
+</code></pre>
+
+<p>master被当前sentinel实例认定为“失效”的间隔时间<br />
+如果当前sentinel与master直接的通讯中，在指定时间内没有响应或者响应错误代码，那么当前sentinel就认为master失效（SDOWN，“主观”失效）<br />
+默认为 30秒</p>
+<p><pre><code>sentinel down-after-milliseconds def_master 30000
+</code></pre><br />
+当sentinel实例是否允许实施“failover”(故障转移)<br />
+no表示当前sentinel为“观察者”(只参与“投票”，不参与实施failover)<br />
+全局中至少有一个为yes<br />
+<pre><code>sentinel can-failover def_master yes // 失效之后允不允许把slave修改成master
+</code></pre></p>
+<blockquote>
+<p>启动sentinel</p>
+</blockquote>
+<p>sentinel进程还是通过redis-server来实现的。<br />
+<pre><code>./src/redis-server ./sentinel.conf --sentinel
+</code></pre></p>
+<h1 id="phpredis"><a name="user-content-phpredis" href="#phpredis" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>PHP操作redis</h1>
+<p>安装<code>phpredis</code>，以<code>.so</code> 文件扩展形式存在</p>
+<blockquote>
+<p>安装</p>
+</blockquote>
+<ul>
+<li>进入<code>phpredis</code>源码目录，执行<code>phpize</code></li>
+<li>配置，<code>./configuer --with-php-config=/phpconfig所在目录</code></li>
+<li>make &amp;&amp; make install</li>
+<li>修改php配置文件<br />
+    [reids]<br />
+    extension=&rdquo;reids.so&rdquo;</li>
+<li>重启php</li>
+</ul>
+<blockquote>
+<p>使用php操作redis</p>
+</blockquote>
+<pre><code>&lt;?php
+    $redis = new Redis();
+    $connect_result = $reids-&gt;connect('127.0.0.1');
+    if ($connect_result) {
+        $members = array('red', 'tan', 'pink', 'cyan');
+        $redis-&gt;sadd('setname', 'red', 'tan', 'pink', 'cyan');
+        $getmem = $reids-&gt;smembers('setname');
+        var_dump($getmem);
+        $redis-&gt;close();
+    }
+</code></pre>
+
+<blockquote>
+<p>工具</p>
+</blockquote>
+<p><code>nomn</code>查看系统资源使用率</p>
+<pre><code>nmon -s 1 -c 20 -f -m ./
+
+-s 间隔多长时间，去抓取系统资源利用率的快照，包括系统资源，网络，硬盘
+-c 执行多长时间
+-f 结果存文件
+-m 文件路径
+</code></pre>
+
+<p>把生成文件，使用树型结构展示，使用<code>nmon analysre</code>（windows）工具</p>
+<p><code>redis-benchmark</code> reids性能测试</p>
+<p>模拟1000个客户端发起1万次测试请求，并统计linux系统资源使用情况。<br />
+<pre><code>redis-benchmark -c 1000 –n 10000 –csv
+</code></pre></p></article></body></html>

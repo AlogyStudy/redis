@@ -770,6 +770,42 @@ sentinel进程还是通过redis-server来实现的。
 ./src/redis-server ./sentinel.conf --sentinel
 ```
 
+> redis key 设计技巧
+
+
+1. 把表名转换为key前缀。如，tag
+2. 第2段放置用于区分key的字段--对应mysql中的主键的列名。如，userid
+3. 第3段放置主键值，如2,3,4...a,b,c
+4. 第4段，写要存储的列名
+
+用户表user，转换为key-value存储 :
+
+| -------- |:-----  | :---- | ----: |
+| userid |  username | password |  emial |
+| 9 | lisa | 123456 | lisa@163.com | 
+
+```
+set user:userid:9:username lisa
+set user:userid:9:password 123456
+set user:userid:9:emial lisa@163.com
+```  
+-----
+```
+get user:userid:9:username
+keys user:userid:9*
+```
+
+注意：
+在关系型数据库中，除主键外，还有可能其他列也步骤查询。
+如上表中，username也是极频繁查询的，往往这种列也是加了索引的。
+转换到k-v数据中，则也要相应的生成一条按照该列为主的key-value
+通过冗余信息来维护，主键/主索引。
+不会导致过度冗余，只维护一个主键，然后其它信息通过主键来查询。
+
+```
+set username:list:uid 9
+```
+
 
 # PHP操作redis
 
